@@ -1,5 +1,4 @@
 function handleProgressBar(progress) {
-	console.log(progress);
 	var num = Math.floor(progress/2);
 	loadText.text = num.toString() + "%";
 	loadBar.clear();

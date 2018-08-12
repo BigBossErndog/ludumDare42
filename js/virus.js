@@ -51,7 +51,6 @@ class Virus {
 			else {
 				this.moveUp();
 			}
-			console.log("Virus moved to: " + this.folder.getPath());
 		}
 		
 		this.actionCounter += 1;

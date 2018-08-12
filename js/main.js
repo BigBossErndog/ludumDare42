@@ -71,6 +71,18 @@ var preboot = {
 var boot = {
 	preload: function() {
 		logoHead = game.add.sprite(game.width/2-150,game.height/2-300,"logoHead");
+		logoHead.inputEnabled = true;
+		logoHead.events.onInputDown.add(function() {
+			window.open("https://www.twitter.com/bigbosserndog");
+		}, this);
+		
+		logoHead.events.onInputOver.add(function() {
+			this.game.canvas.style.cursor = "pointer";
+		}, this);
+		
+		logoHead.events.onInputOut.add(function() {
+			this.game.canvas.style.cursor = "default";
+		}, this);
 		loadBar = game.add.graphics();
 		loadText = game.add.text(game.world.centerX, game.world.centerY + 200, "0%");
 		loadText.addColor("#ffffff", 0);
@@ -125,7 +137,9 @@ var boot = {
 		
 		if (num > 100) num = 100;
 		if (this.counter < 0) {
-			if (this.game.input.activePointer.justPressed(100)) this.game.state.start("main", true);
+			var rect = new Phaser.Rectangle(logoHead.x, logoHead.y, logoHead.width, logoHead.height);
+			if (this.game.input.activePointer.justPressed(100) && !Phaser.Rectangle.contains(rect, this.game.input.x, this.game.input.y)) this.game.state.start("main", true);
+			this.game.canvas.style.cursor = "default";
 			loadText.text = "Click to Begin";
 		}
 		else {

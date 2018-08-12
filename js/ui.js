@@ -214,7 +214,6 @@ class FolderSprite {
 							this.folder.parentFolder.remove(this.folder);
 							f.folder.add(this.folder);
 							this.destroyed = true;
-							console.log(this.folder.name + " moved to " + this.folder.parentFolder.getPath());
 							cancel = true;
 						}
 					}
@@ -226,7 +225,6 @@ class FolderSprite {
 						this.folder.parentFolder.remove(this.folder);
 						this.explorer.parentFolderSprite.folder.add(this.folder);
 						this.destroyed = true;
-						console.log(this.folder.name + " moved to " + this.folder.parentFolder.getPath());
 					}
 				}
 			}
@@ -616,7 +614,6 @@ class TextFileSprite {
 						this.file.folder = f.folder;
 						cancel = true;
 						this.destroyed = true;
-						console.log(this.file.folder.name);
 					}
 				}
 				if (this.explorer.parentFolderSprite != null) {
