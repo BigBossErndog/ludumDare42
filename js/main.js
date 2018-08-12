@@ -55,7 +55,7 @@ var preboot = {
 		game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 		game.scale.pageAlignHorizontally = true;
 		game.scale.pageAlignVertically = true;
-		//game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		//game.scale.setShowAll();
 		game.scale.refresh();
 		game.stage.disableVisibilityChange = true;
@@ -78,7 +78,8 @@ var boot = {
 		loadText.font = "Courier";
 		loadText.fontSize = 50;
 		
-		madeBy = game.add.text(game.world.centerX, game.world.centerY + 20, "Made By BigBossErndog");
+		madeBy = game.add.text(game.world.centerX, game.world.centerY, "Made By BigBossErndog\nLudum Dare 42");
+		madeBy.align = "center";
 		madeBy.anchor.x = 0.5;
 		madeBy.font = "Courier";
 		madeBy.fontSize = 20;
@@ -108,7 +109,7 @@ var boot = {
 		game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 		game.scale.pageAlignHorizontally = true;
 		game.scale.pageAlignVertically = true;
-		//game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		//game.scale.setShowAll();
 		game.scale.refresh();
 		game.stage.disableVisibilityChange = true;
@@ -119,15 +120,13 @@ var boot = {
 	
 	update: function() {
 		this.counter -= 1;
-		num = 50 +  (50 - Math.floor(((this.counter - 60) / (4 * 60)) * 50));
+		num = 50 +  (50 - Math.floor(((this.counter - 15) / (5 * 60)) * 50));
 		
 		
 		if (num > 100) num = 100;
-		if (this.counter < -30) {
-			this.game.state.start("main", true);
-		}
-		else if (this.counter < 1 * 60) {
-			loadText.text = "100%"
+		if (this.counter < 0) {
+			if (this.game.input.activePointer.justPressed(100)) this.game.state.start("main", true);
+			loadText.text = "Click to Begin";
 		}
 		else {
 			loadText.text = num + "%";
@@ -154,7 +153,7 @@ var main = {
 		game.scale.fullScreenScaleMode = Phaser.ScaleManager.SHOW_ALL;
 		game.scale.pageAlignHorizontally = true;
 		game.scale.pageAlignVertically = true;
-		//game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
+		game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		//game.scale.setShowAll();
 		game.scale.refresh();
 		game.stage.disableVisibilityChange = true;
