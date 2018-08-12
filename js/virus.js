@@ -66,22 +66,28 @@ class Virus {
 		switch (chance) {
 			case 0:
 				os.createTxtWindow(Math.round(Math.random() * 500) -250 - 200/2 + os.game.width/2, Math.round(Math.random() * 500) - 250 - 200/2 + os.game.height/2, "I HATE YOU");
+				sfx.error.play();
 				break;
 			case 1:
 				os.createTxtWindow(Math.round(Math.random() * 500) -250 - 200/2 + os.game.width/2, Math.round(Math.random() * 500) - 250 - 200/2 + os.game.height/2, "I KNOW WHAT YOU DID");
+				sfx.error.play();
 				break;
 			case 2:
 				os.createTxtWindow(Math.round(Math.random() * 500) -250 - 200/2 + os.game.width/2, Math.round(Math.random() * 500) - 250 - 200/2 + os.game.height/2, "THEY WILL NEVER FORGIVE YOU");
+				sfx.error.play();
 				break;
 			case 3:
 				os.createTxtWindow(Math.round(Math.random() * 500) -250 - 200/2 + os.game.width/2, Math.round(Math.random() * 500) - 250 - 200/2 + os.game.height/2, "YOU WILL NEVER PUT IT TOGETHER");
+				sfx.error.play();
 				break;
 			case 4:
 				os.createTxtWindow(Math.round(Math.random() * 500) -250 - 200/2 + os.game.width/2, Math.round(Math.random() * 500) - 250 - 200/2 + os.game.height/2, "I KNOW YOU HAVE IT");
+				sfx.error.play();
 				break;
 			case 5:
 				case 2:
 				os.createTxtWindow(Math.round(Math.random() * 500) -250 - 200/2 + os.game.width/2, Math.round(Math.random() * 500) - 250 - 200/2 + os.game.height/2, "GIVE IT TO US GIVE IT TO US GIVE IT TO US GIVE IT TO US GIVE IT TO US GIVE IT TO US GIVE IT TO US GIVE IT TO US GIVE IT TO US GIVE IT TO US");
+				sfx.error.play();
 				break;
 		}
 		

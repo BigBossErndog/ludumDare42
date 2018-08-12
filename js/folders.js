@@ -1,4 +1,4 @@
-var folderNames = ["Hello", "Goodbye", "Japan", "hent@i", "p0rn", "roms", "movies", "games", "stash", "bank details", "pictures", "videos", "Documents", "Program Files", "System32", "hacking tools", "steam", "steam works", "doki doki", "tutorials", "phaser3", "phaserCE", "canvas", "html", "js", "stalk pics", "top secret", "classified", "protected", "ur mom", "stuff"]
+var folderNames = ["Hello", "Goodbye", "Japan", "hent@i", "p0rn", "roms", "movies", "games", "stash", "bank details", "pictures", "videos", "Documents", "Program Files", "System32", "hacking tools", "steam", "steam works", "doki doki", "tutorials", "phaser3", "phaserCE", "canvas", "html", "js", "top secret", "classified", "protected", "ur mom", "stuff", "water", "gb", "USA", "anime trash", "weeb", "culture", "coursework", "homework", "study", "crash", "dragons", "music", "thing", "DO NOT ENTER", "PRIVATE", "secret pics", "illegal stuff", "programs", "doki doki", "characters", "ddlc", "artwork", "projects", "work", "material", "focus", "creations", "ludum dare", "newgrounds", "api", "phaser"]
 class Folder {
 	constructor(name, parentFolder) {
 		this.children = [];

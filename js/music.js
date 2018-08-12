@@ -157,7 +157,7 @@ function SoundManager(library) {
 	}
 }
 
-function Sound(name, manager, loop, allowMultiple) {
+function Sound(game, name, manager, loop, allowMultiple) {
 	this.key = name;
 	this.sound = game.add.audio(name);
 	this.manager = manager;

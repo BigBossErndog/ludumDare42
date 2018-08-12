@@ -5,12 +5,12 @@ class OS {
 		this.rootFolder = new Folder("User", null);
 		this.createRandomFolderStructure();
 		
-		this.bg = this.game.add.group();
 		this.desktop = [];
 		
-		this.binIcon = this.createDesktopIcon("Bin", 30, 20, "bin");
+		this.osGroup = this.game.add.group();
+		this.binIcon = this.createDesktopIcon("Bin", 30, 30, "bin", this.osGroup);
 		
-		this.fileExplorerIcon = this.createDesktopIcon("File Explorer", 30, 20 + 130, "folder");
+		this.fileExplorerIcon = this.createDesktopIcon("File Explorer", 30, 30 + 130, "folder", this.osGroup);
 		this.fileExplorerIcon.os = this;
 		this.fileExplorerIcon.setTask(function(){
 			this.os.createExplorer(this.game.width/2 + Math.round(Math.random() * 400) - 200 - 400/2, this.game.height/2 + Math.round(Math.random() * 400) - 200 - 300/2, this.os.rootFolder);
@@ -27,13 +27,13 @@ class OS {
 		
 		this.counter2 = 0;
 		
-		this.systemIcon = this.createDesktopIcon("System", 30, 20 + 130*2, "system");
+		this.systemIcon = this.createDesktopIcon("System", 30, 40 + 130*2, "system", this.osGroup);
 		this.systemIcon.os = this;
 		this.systemIcon.setTask(function() {
 			this.os.createSystemWindow(this.game.width/2 + Math.round(Math.random() * 200) - 100 - 400/2, this.game.height/2 + Math.round(Math.random() * 200) - 100 - 300/2);
 		});
 		
-		this.readmeIcon = this.createDesktopIcon("README.txt", 30, 20 + 130*3, "txt");
+		this.readmeIcon = this.createDesktopIcon("README.txt", 30, 30 + 130*3, "txt", this.osGroup);
 		this.readmeIcon.os = this;
 		this.readmeIcon.setTask(function() {
 			this.os.createTxtWindow(Math.round(Math.random() * 400) -200 - 200/2 + this.game.width/2, Math.round(Math.random() * 400) - 200 - 300/2 + this.game.height/2, "\
@@ -79,6 +79,7 @@ If you run out of hard disk space all the important data will be lost forever. S
 		this.createTextFile("gaming", "I don't wanna stop gaming");
 		
 		this.createTextFile("macncheese", "I like mac and cheese, it's not my favorite food tho.");
+		
 	}
 	
 	getSpaceLeft() {
@@ -89,14 +90,14 @@ If you run out of hard disk space all the important data will be lost forever. S
 		return this.rootFolder.usage();
 	}
 	
-	createDesktopIcon(name, x, y, img) {
+	createDesktopIcon(name, x, y, img, group) {
 		var di = new DesktopIcon(
 			this.game,
 			x,
 			y,
 			name,
 			img,
-			this.bg
+			group
 		)
 		this.desktop.push(di);
 		return di;
@@ -130,12 +131,12 @@ If you run out of hard disk space all the important data will be lost forever. S
 		this.files.push(newVirus);
 	}
 	
-	createTextFile(name, txt) {
-		this.files.push(new TextFile(this.getRandomFolder(), name, txt));
+	createTextFile(name, txt, infected) {
+		this.files.push(new TextFile(this.getRandomFolder(), name, txt, infected));
 	}
 	
 	createRandomFolderStructure() {
-		for (var i = 0; i < 100; i++) {
+		for (var i = 0; i < 50; i++) {
 			var loc = this.getRandomFolder();
 			while (loc.children.length > 9) {
 				loc = this.getRandomFolder();
@@ -200,18 +201,31 @@ If you run out of hard disk space all the important data will be lost forever. S
 				for (var i = 0; i < 3; i++) {
 					this.createTxtWindow(Math.round(Math.random() * 400) -200 - 300/2 + this.game.width/2, Math.round(Math.random() * 400) - 200 - 300/2 + this.game.height/2, "get rekt");
 				}
+				sfx.error.play();
 				break;
 			case 1:
 				this.createTxtWindow(Math.round(Math.random() * 400) -200 - 200/2 + this.game.width/2, Math.round(Math.random() * 400) - 200 - 200/2 + this.game.height/2, "YOU BETTER GET IT COMPLETE");
+				sfx.error.play();
 				break;
 			case 2:
 				this.createTxtWindow(Math.round(Math.random() * 400) -200 - 200/2 + this.game.width/2, Math.round(Math.random() * 400) - 200 - 200/2 + this.game.height/2, "YOU ARE RESPONSIBLE FOR EVERYTHING");
+				sfx.error.play();
 				break;
 			case 3:
-				this.createTxtWindow(Math.round(Math.random() * 400) -200 - 200/2 + this.game.width/2, Math.round(Math.random() * 400) - 200 - 200/2 + this.game.height/2, "don't let us down");
+				this.createTxtWindow(Math.round(Math.random() * 400) -200 - 200/2 + this.game.width/2, Math.round(Math.random() * 400) - 200 - 200/2 + this.game.height/2, "don't let them down");
+				sfx.error.play();
 				break;
 			case 4:
 				this.createTxtWindow(Math.round(Math.random() * 400) -200 - 200/2 + this.game.width/2, Math.round(Math.random() * 400) - 200 - 200/2 + this.game.height/2, "I WANT MORE");
+				sfx.error.play();
+				break;
+			case 5:
+				this.createTxtWindow(Math.round(Math.random() * 400) -200 - 200/2 + this.game.width/2, Math.round(Math.random() * 400) - 200 - 200/2 + this.game.height/2, "DON'T STOP NOW");
+				sfx.error.play();
+				break;
+			case 6:
+				this.createTxtWindow(Math.round(Math.random() * 400) -200 - 200/2 + this.game.width/2, Math.round(Math.random() * 400) - 200 - 200/2 + this.game.height/2, "you can't do it");
+				sfx.error.play();
 				break;
 		}
 	}
@@ -234,10 +248,10 @@ If you run out of hard disk space all the important data will be lost forever. S
 		if (this.counter >= this.virusSpawnRate) {
 			this.counter = 0;
 			for (var i = 0; i < this.virusSpawnNumber; i++) {
-				this.createVirus(this.getRandomFolder(), Math.floor(Math.random() * 4));
+				this.createVirus(this.getRandomFolder(), Math.floor(Math.random() * 8));
 			}
 			this.virusStartSize += 1;
-			this.virusStartSize = Math.ceil(this.virusStartSize * 1.2);
+			this.virusStartSize = Math.ceil(this.virusStartSize * 1.5);
 			if (this.virusSpawnRate > 0) this.virusSpawnRate -= 2;
 			this.cycles += 1;
 			if (this.cycles == 10 + this.virusSpawnNumber) {
@@ -248,6 +262,7 @@ If you run out of hard disk space all the important data will be lost forever. S
 		
 		if (this.rootFolder.usage() > this.maxSpace) {
 			music.computerWorld.stop();
+			playerScore = this.timer;
 			this.game.state.start("gameOver", true);
 		}
 		
@@ -293,6 +308,7 @@ class DesktopIcon {
 		this.nameText.wordWrapWidth = 100;
 		this.nameText.align = "center";
 		this.nameText.x = this.x + 100/2 - this.nameText.width/2;
+		this.nameText.addColor("#ffffff", 0);
 		
 		this.group.add(this.sprite);
 		this.group.add(this.nameText);

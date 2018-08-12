@@ -686,7 +686,7 @@ class SystemWindow {
 
 
 class TxtWindow {
-	constructor(game, x, y, os, t) {
+	constructor(game, x, y, os, t, infected) {
 		this.game = game;
 		this.os = os;
 		
@@ -729,6 +729,9 @@ class TxtWindow {
 		this.txt.wordWrap = true;
 		this.txt.wordWrapWidth = this.width - 40;
 		this.group.add(this.txt);
+		
+		this.infected = null;
+		
 	}
 	
 	setText(txt) {

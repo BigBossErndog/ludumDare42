@@ -427,6 +427,7 @@ class VirusSprite {
 				if (this.overlaps(this.explorer.os.binIcon.getRect())) {
 					this.file.destroy();
 					this.destroyed = true;
+					sfx.zap1.play();
 				}
 			}
 		}
@@ -600,6 +601,7 @@ class TextFileSprite {
 				if (this.overlaps(this.explorer.os.binIcon.getRect())) {
 					this.file.destroy();
 					this.destroyed = true;
+					sfx.trash.play();
 				}
 			}
 			else {
