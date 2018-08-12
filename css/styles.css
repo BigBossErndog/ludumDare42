@@ -1,14 +1,25 @@
-#game {
-	align:center,
-	margin:0
-}
-
-body {
+html, body {
 	margin:0;
 	padding:0;
 	overflow:hidden;
 	position:centre;
 	display:block;
+	height:100%;
+	width:100%;
+}
+body {
+	width:100%;
+	height:100%;
+}
+#canvas{
+	display:block;
+	margin:0;
+	padding:0;
+	height:100%;
+	width:100%;
+}
+canvas{
+	display:absolute;
 	height:100%;
 	width:100%;
 }

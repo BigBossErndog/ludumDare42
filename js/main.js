@@ -34,7 +34,7 @@ function createBGGradient(game, color1, color2, width, height, group) {
 	return g;
 }
 
-var game = new Phaser.Game(gameDim.width, gameDim.height, "game", null);
+var game = new Phaser.Game(gameDim.width, gameDim.height, "canvas", null);
 window.onwheel = function(){ return false; }
 
 var logoHead = null;
@@ -229,6 +229,7 @@ var gameOver = {
 		this.txt.addColor("#ffffff", 0);
 		this.txt.font = "Courier New";
 		this.txt.text += "You lasted for " + playerScore.h + "h " + playerScore.m + "m " + playerScore.s + "s";
+		var s = playerScore.s*1000 + playerScore.m*60*1000 + playerScore.h*(Math.pow(60, 2))*1000;
 		sfx.hit1 = new Sound(this.game, "hit1", sfxManager);
 		sfx.hit1.play();
 		
